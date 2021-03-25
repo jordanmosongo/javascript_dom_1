@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratique du DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container-head">
+            <h1>Répertoire de contact</h1>
+        </div>
+        <div class="container-body">
+            <div class="content-form">
+                <div class="content-header">
+                    <h2>Formulaire de contact</h2>
+                </div>
+                <form class="content-body-form">
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" name="prenom" id="prenom">
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" name="nom" id="nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="groupe">Groupe</label>
+                        <select name="groupe" id="groupe" class="form-control">
+                            <option value="amis">amis</option>
+                            <option value="famille">Famille</option>
+                            <option value="professionnel">Professionnel</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="file">
+                        <div class="image_picked" id="image_back">                           
+                        </div>
+                    </div>
+                    <div class="form-action">
+                        <button type="button" id="btn-create">Créer</button>
+                        <button type="button" id="btn-initialize">Réinit.</button>
+                    </div>
+                </form>
+            </div>
+            <div class="content-list">
+                <div class="content-header">
+                    <h2>Liste de contact</h2>                    
+                </div>
+                <div class="contact-list" id="ma-liste">
+                   <!--
+                    <div class="contact-element">
+                        <div class="photo">
+                            <img src="image/profil.png" alt="photo profil">
+                        </div>
+                        <div class="texte">
+                            <h3>Prénom Nom</h3>
+                            <h3>Groupe</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod at officia est commodi, officiis minus, nisi asperiores tenetur aliquid sit quisquam odit voluptatem veritatis dicta pariatur laboriosam. Dicta, officia modi?</p>
+                        </div>
+                        <span class="delete" id="delete" >
+                            <span class="id_value">8</span> X
+                        </span>
+                    </div>-->
+                                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
