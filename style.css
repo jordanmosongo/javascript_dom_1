@@ -335,7 +335,7 @@ textarea:focus {
   }
   .container-head form {
     margin: auto;
-    width: 94%;
+    width: 85%;
   }
   .container-body {
     height: 100rem;
@@ -368,6 +368,10 @@ textarea:focus {
   }
   .content-header h2 {
     font-size: 25px;
+  }
+  .container-head form {
+    margin: auto;
+    width: 80%;
   }
   .content-form,
   .content-list {
