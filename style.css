@@ -370,8 +370,7 @@ textarea:focus {
     font-size: 25px;
   }
   .container-head form {
-    margin: auto;
-    width: 80%;
+    display: none;
   }
   .content-form,
   .content-list {
