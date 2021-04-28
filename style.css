@@ -17,7 +17,7 @@ body {
 }
 .container-head {
   background-color: #3467f1;
-  height: 4rem;
+  padding: 10px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -59,7 +59,7 @@ body {
 .container-head h1 {
   color: #ffffff;
   font-family: "Lato", sans-serif;
-  font-size: 2.5rem;
+  font-size: 40px;
   margin-left: 20px;
 }
 .container-body {
@@ -81,7 +81,7 @@ body {
   border-radius: 0 0 10px 10px;
 }
 .content-list {
-  width: 54% !important;
+  width: 54%;
 }
 .content-header {
   background-color: #3467f1;
@@ -210,10 +210,11 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 10px;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: 85%;
 }
 .contact-element {
   display: flex;
@@ -314,4 +315,77 @@ textarea:focus {
 }
 .pagination #next {
   margin-left: 10px;
+}
+@media (max-width: 1280px) {
+  .container-head h1 {
+    font-size: 34px;
+  }
+  .content-header h2 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  .container-head {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-head form {
+    margin: auto;
+    width: 94%;
+  }
+  .container-body {
+    height: 100rem;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .content-list {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+  .content-header h2 {
+    font-size: 28px;
+  }
+
+  .content-form,
+  .content-list {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 540px) {
+  .container {
+    width: 98%;
+  }
+  .container-head h1 {
+    font-size: 28px;
+  }
+  .content-header h2 {
+    font-size: 25px;
+  }
+  .content-form,
+  .content-list {
+    width: 100%;
+  }
+  .contact-element {
+    height: auto;
+    padding: 10px 0;
+  }
+  .contact-element .photo {
+    width: 45%;
+  }
+  .contact-element .texte {
+    width: 55%;
+  }
+  .form-action button {
+    padding: 7px 25px;
+    margin-left: 10px;
+    font-size: 24px;
+  }
 }

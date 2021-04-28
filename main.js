@@ -1,32 +1,32 @@
-var contacts = [];
-var photoInit = "image/user.png";
-var urlPhotoInit = 'url("' + photoInit + '")';
-var prenom_gotten = document.getElementById("prenom");
-var nom_gotten = document.getElementById("nom");
-var groupe_gotten = document.getElementById("groupe");
-var bio_gotten = document.getElementById("bio");
-var image = document.getElementById("file");
-var spinner = document.getElementById("spinner");
-var imageChoisie = document.getElementById("image_back");
-var pagination = document.getElementById("pagination");
-var bouton_create = document.getElementById("btn-create");
-var bouton_reinit = document.getElementById("btn-initialize");
-var input_file = document.getElementById("file");
-var inputSearch = document.getElementById("search");
-var btnSearch = document.getElementById("btn-search");
+let contacts = [];
+let photoInit = "image/user.png";
+let urlPhotoInit = 'url("' + photoInit + '")';
+let prenom_gotten = document.getElementById("prenom");
+let nom_gotten = document.getElementById("nom");
+let groupe_gotten = document.getElementById("groupe");
+let bio_gotten = document.getElementById("bio");
+let image = document.getElementById("file");
+let spinner = document.getElementById("spinner");
+let imageChoisie = document.getElementById("image_back");
+let pagination = document.getElementById("pagination");
+let bouton_create = document.getElementById("btn-create");
+let bouton_reinit = document.getElementById("btn-initialize");
+let inputFile = document.getElementById("file");
+let inputSearch = document.getElementById("search");
+let btnSearch = document.getElementById("btn-search");
+let imagePickedUrl = "";
 
-function get_value() {
-  let tab = image.value.split("\\");
+function getEnteredValue() {
   return {
     prenom: prenom_gotten.value,
     nom: nom_gotten.value,
     groupe: groupe_gotten.value,
     bio: bio_gotten.value,
-    photo: "image/" + tab[tab.length - 1],
+    photo: imagePickedUrl,
   };
 }
 function areFieldsValid() {
-  let contact = get_value();
+  let contact = getEnteredValue();
   let testD_unicite = true;
   contacts.forEach((item) => {
     if (
@@ -48,7 +48,7 @@ function areFieldsValid() {
   return true;
 }
 function init_list() {
-  var liste = document.getElementById("ma-liste");
+  let liste = document.getElementById("ma-liste");
   while (liste.firstChild) {
     liste.removeChild(liste.firstChild);
   }
@@ -63,12 +63,10 @@ function init_list() {
     );
   }
 }
-function add_value() {
-  let new_contact = get_value();
-  console.log(new_contact);
+function addValue() {
+  let new_contact = getEnteredValue();
   spinner.style.display = "none";
   contacts.push(new_contact);
-  //   hideOrShowPagination();
   initialize("", "", "", "", "", urlPhotoInit);
   init_list();
 }
@@ -80,33 +78,21 @@ function delete_item(event) {
     let index_contact = parseInt(id_value.lastChild.textContent);
     contacts.splice(index_contact, 1);
     init_list();
-    // hideOrShowPagination();
     if (contacts.length == 0) {
       spinner.style.display = "inherit";
     }
   }
 }
-function modifier(index) {
-  let contactAmodifier = contacts[index];
-  initialize(
-    contactAmodifier.prenom,
-    contactAmodifier.nom,
-    contactAmodifier.groupe,
-    contactAmodifier.bio,
-    contactAmodifier.photo
-  );
-}
 function add_to_dom(prenom, nom, groupe, bio, photo, id) {
-  var contact_list = document.getElementById("ma-liste");
-  var contact_element = document.createElement("div");
-  var contact_element_photo = document.createElement("div");
-  //var contact_element_photo_image = document.createElement("img");
-  var contact_element_text = document.createElement("div");
-  var contact_element_text_fullname = document.createElement("h3");
-  var contact_element_text_groupe = document.createElement("h3");
-  var contact_element_text_bio = document.createElement("p");
-  var delete_element = document.createElement("span");
-  var id_value = document.createElement("span");
+  let contact_list = document.getElementById("ma-liste");
+  let contact_element = document.createElement("div");
+  let contact_element_photo = document.createElement("div");
+  let contact_element_text = document.createElement("div");
+  let contact_element_text_fullname = document.createElement("h3");
+  let contact_element_text_groupe = document.createElement("h3");
+  let contact_element_text_bio = document.createElement("p");
+  let delete_element = document.createElement("span");
+  let id_value = document.createElement("span");
   let modif_element = document.createElement("span");
 
   id_value.classList.add("hide-me");
@@ -116,16 +102,11 @@ function add_to_dom(prenom, nom, groupe, bio, photo, id) {
   delete_element.setAttribute("id", "delete");
   delete_element.addEventListener("click", delete_item);
   delete_element.appendChild(id_value);
-
-  //   contact_element_photo_image.setAttribute("src", photo);
-  //   contact_element_photo_image.setAttribute("alt", "photo de profil");
-
   contact_element_text_fullname.textContent = prenom + " " + nom;
   contact_element_text_groupe.textContent = groupe;
   contact_element_text_bio.textContent = bio;
   contact_element_photo.style.backgroundImage = 'url("' + photo + '")';
   contact_element_photo.classList.add("photo");
-  //contact_element_photo.appendChild(contact_element_photo_image);
 
   contact_element_text.classList.add("texte");
   contact_element_text.appendChild(contact_element_text_fullname);
@@ -137,22 +118,15 @@ function add_to_dom(prenom, nom, groupe, bio, photo, id) {
   contact_element.appendChild(contact_element_text);
   contact_element.appendChild(delete_element);
   contact_element.appendChild(modif_element);
-  console.log(contact_element);
   contact_list.appendChild(contact_element);
-  console.log(contact_list);
 }
 function initialize(prenom, nom, groupe, bio, photo) {
-  //   prenom_gotten.value = prenom;
-  //   nom_gotten.value = nom;
-  //   groupe_gotten.value = groupe;
-  //   bio_gotten.value = bio;
+  prenom_gotten.value = prenom;
+  nom_gotten.value = nom;
+  groupe_gotten.value = groupe;
+  bio_gotten.value = bio;
   imageChoisie.style.backgroundImage = photo;
 }
-// function hideOrShowPagination() {
-//   contacts.length > 3
-//     ? pagination.classList.replace("sans-pagination", "pagination")
-//     : pagination.classList.replace("pagination", "sans-pagination");
-// }
 function checkInputSearch(valeurSaisie) {
   let arr = valeurSaisie.split(" ");
   if (arr.length != 2) {
@@ -173,7 +147,7 @@ function searchContact(fullname) {
 }
 
 function addToDomAfterSearch(contactFound) {
-  var liste = document.getElementById("ma-liste");
+  let liste = document.getElementById("ma-liste");
   while (liste.firstChild) {
     liste.removeChild(liste.firstChild);
   }
@@ -190,22 +164,26 @@ function addToDomAfterSearch(contactFound) {
 bouton_create.addEventListener("click", (event) => {
   event.preventDefault();
   areFieldsValid()
-    ? add_value()
+    ? addValue()
     : alert(`
     Veuillez remplir tous les champs ou rassurez-vous que
     la combinaison nom et prénom est unique
     `);
 });
 
-bouton_reinit.addEventListener("click", initialize("", urlPhotoInit));
+bouton_reinit.addEventListener(
+  "click",
+  initialize("", "", "", "", urlPhotoInit)
+);
 
-input_file.addEventListener("change", (event) => {
+inputFile.addEventListener("change", (event) => {
   event.preventDefault();
-  var image = document.getElementById("file");
-  var tab = image.value.split("\\");
-  console.log(tab[tab.length - 1]);
-  var div_image = document.getElementById("image_back");
-  div_image.style.backgroundImage = 'url("image/' + tab[tab.length - 1] + '")';
+  let imagePicked = inputFile.files[0];
+  let divImage = document.getElementById("image_back");
+  if (imagePicked != null) {
+    imagePickedUrl = `${URL.createObjectURL(imagePicked)}`;
+    divImage.style.backgroundImage = `url(${imagePickedUrl})`;
+  }
 });
 
 btnSearch.addEventListener("click", (event) => {
